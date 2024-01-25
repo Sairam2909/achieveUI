@@ -13,7 +13,6 @@ export class GoalsDashboardComponent implements OnInit{
 
   allGoals = [];
   daysLeft: number;
-
   constructor(private router: Router,
               private goalService: GoalsService) {}
 
