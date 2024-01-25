@@ -37,7 +37,6 @@ export class GoalsFormComponent {
   initializeForm() {
       this.reactiveForm = this.formBuilder.group({
           description: [''],
-          status: ['Open'],
           dueDate: ['']
     });
   }
@@ -47,7 +46,7 @@ export class GoalsFormComponent {
         customerId: 5631,
         userId: 123,
         description: this.reactiveForm.value.description,
-        status: this.reactiveForm.value.status,
+        status: 'Submitted',
         dueDate: this.reactiveForm.value.dueDate,
         isSaved: 0,
         createdBy: this.userName,
@@ -73,7 +72,7 @@ export class GoalsFormComponent {
         customerId: 5631,
         userId: 123,
         description: this.reactiveForm.value.description,
-        status: this.reactiveForm.value.status,
+        status: 'In Draft',
         dueDate: this.reactiveForm.value.dueDate,
         isSaved: 1,
         createdBy: this.userName,
@@ -99,7 +98,6 @@ export class GoalsFormComponent {
         // console.log(res);
         this.saveGoalInDb = res[0].isSaved;
         this.reactiveForm.controls['description'].patchValue(res[0].description);
-        this.reactiveForm.controls['status'].patchValue(res[0].status);
         this.reactiveForm.controls['dueDate'].patchValue(res[0].dueDate);
     })
   }
