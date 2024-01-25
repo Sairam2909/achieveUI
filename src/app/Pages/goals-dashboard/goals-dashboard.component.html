@@ -43,7 +43,7 @@
 
 <!-- Goals card -->
 <div class="container mt-5" style="width: 70rem; margin: 0 auto;">
-    @if (allGoals) {
+    @if (allGoals.length > 0) {
         @for (goal of allGoals; track goal; let i = $index) {
         <div class="card text my-2" style="width: 70rem;  background-color: white;">
             <div class="card-body">
