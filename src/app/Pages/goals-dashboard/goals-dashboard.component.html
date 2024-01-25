@@ -24,7 +24,7 @@
 
             <div class="card mb-3" style="width: 15rem;">
                 <div class="card-body">
-                    <h1 class="card-text">5</h1>
+                    <h1 class="card-text">{{countCompletedGoals()}}</h1>
                     <h5 class="card-title" style="color: #4b47b5; font-weight: bold;"><i class="bi bi-check-circle-fill"></i> Completed</h5>
                     
                 </div>
@@ -65,10 +65,11 @@
                         style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px;"
                         (click)="editGoal(i)">Edit
                         Goal</button>
-                    } @else if (goal.status === 'Submitted') {
+                    } 
+                    <!-- @else if (goal.status === 'Submitted') {
                     <button class="btn btn"
                         style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px;">Completed</button>
-                    }
+                    } -->
                 </div>
             </div>
         </div>

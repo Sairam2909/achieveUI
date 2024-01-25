@@ -13,6 +13,7 @@ export class GoalsDashboardComponent implements OnInit{
 
   allGoals = [];
   daysLeft: number;
+
   constructor(private router: Router,
               private goalService: GoalsService) {}
 
@@ -23,6 +24,7 @@ export class GoalsDashboardComponent implements OnInit{
   ngOnInit() {
     this.goalService.getGoals().subscribe((res) => {
       this.allGoals = res;
+      this.countCompletedGoals();
     })
   }
 
@@ -33,5 +35,9 @@ export class GoalsDashboardComponent implements OnInit{
   getNumberOfDays(i) {
     const timeDifference = new Date(this.allGoals[i].dueDate).getTime() - new Date().getTime();
     return this.daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
+  }
+
+  countCompletedGoals(){
+    return this.allGoals.filter(goal => goal.status === 'completed').length;
   }
 }
