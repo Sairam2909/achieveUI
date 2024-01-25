@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,  RouterLink } from '@angular/router';
 import { GoalsService } from '../../Services/goals.service';
 
 @Component({
   selector: 'app-goals-dashboard',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './goals-dashboard.component.html',
   styleUrl: './goals-dashboard.component.css'
 })
