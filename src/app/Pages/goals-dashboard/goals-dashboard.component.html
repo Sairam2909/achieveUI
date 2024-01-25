@@ -10,7 +10,7 @@
 
             <div class="card mb-3" style="width: 15rem;">
                 <div class="card-body">
-                    <h1 class="card-text">2</h1>
+                    <h1 class="card-text">{{ allGoals.length }}</h1>
                     <h5 class="card-title" style="color: #4b47b5; font-weight: bold;">Active Goals</h5>
                 </div>
             </div>
@@ -41,28 +41,30 @@
 
 <!-- Goals card -->
 <div class="container mt-5" style="width: 70rem; margin: 0 auto;">
-        <div class="card text" style="width: 70rem;  background-color: white;">
-            <div class="card-body">
-                <div class="d-flex justify-content-start">
-                    <i class="bi bi-arrow-right-circle"
-                        style="color: #4b47b5; font-weight: bold; font-size: 40px; margin: 10px;"></i>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                        industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
-                </div>
-                <div class="d-flex justify-content" style="margin-left:57px;"> <p class="card-text"
-                    style="color: grey; font-weight: bold; margin-right: 10px; padding-right: 10px;border-right: 1px solid #ccc;">
-                    <i class="bi bi-calendar"></i> Due in 10 Days
-                </p>
-                <p class="card-text"
-                    style="color: grey; font-weight: bold; margin-right: 10px;padding-right: 10px;">
-                    Status: Approved</p></div>
-                <div class="d-flex justify-content-end mt-1">
-                    <button href="#" class="btn btn"
-                        style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px;">Edit
-                        Goal</button>
-                    <button href="#" class="btn btn"
-                        style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px;">Completed</button>
-                </div>
+    @for (goal of allGoals; track goal; let i = $index) {
+    <div class="card text my-2" style="width: 70rem;  background-color: white;">
+        <div class="card-body">
+            <div class="d-flex justify-content-start">
+                <i class="bi bi-arrow-right-circle"
+                    style="color: #4b47b5; font-weight: bold; font-size: 40px; margin: 10px;"></i>
+                <p>{{goal.description}}</p>
             </div>
+            <div class="d-flex justify-content" style="margin-left:57px;"> <p class="card-text"
+                style="color: grey; font-weight: bold; margin-right: 10px; padding-right: 10px;border-right: 1px solid #ccc;">
+                <i class="bi bi-calendar"></i> {{getNumberOfDays(i) > 0 ? 'Due in ' + getNumberOfDays(i) + (getNumberOfDays(i) > 1 ? ' days' : ' day') : 'Over due'}}
+            </p>
+            <p class="card-text"
+                style="color: grey; font-weight: bold; margin-right: 10px;padding-right: 10px;">
+                Status: {{goal.status}}</p></div>
+            <div class="d-flex justify-content-end mt-1">
+                <button href="#" class="btn btn"
+                    style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px;"
+                    (click)="editGoal(i)">Edit
+                    Goal</button>
+                <!-- <button href="#" class="btn btn"
+                    style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px;">Completed</button> -->
+            </div>
+        </div>
     </div>
+    }
+</div>

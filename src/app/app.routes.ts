@@ -4,5 +4,6 @@ import { GoalsDashboardComponent } from './Pages/goals-dashboard/goals-dashboard
 
 export const routes: Routes = [
     { path: '', component: GoalsDashboardComponent },
-    { path: 'create-goal', component: GoalsFormComponent}
+    { path: 'create-goal', component: GoalsFormComponent},
+    {path: 'Goal/:userId/:goalId', component: GoalsFormComponent}
 ];
