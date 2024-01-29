@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthgaurdService } from '../../Services/authgaurd.service';
 
@@ -10,12 +10,12 @@ import { AuthgaurdService } from '../../Services/authgaurd.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  @ViewChild('username')username: ElementRef;
+  @ViewChild('password')password: ElementRef;
 
   constructor(private auth: AuthgaurdService) {}
 
-
-redirectToDashboard() {
-  // this.router.navigate(['/dashboard']);
-  this.auth.verify('user', 'pass');
-}
+  redirectToDashboard() {
+    this.auth.verify(this.username.nativeElement.value, this.password.nativeElement.value);
+  }
 }
