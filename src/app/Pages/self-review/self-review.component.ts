@@ -15,4 +15,12 @@ export class SelfReviewComponent {
     this.router.navigate(['/self-review-form']);
   }
 
+  editReview() {
+    this.router.navigate(['/self-review-form'])
+  }
+
+  redirectToDashboard() {
+    this.router.navigate(['../dashboard']);
+  }
+
 }

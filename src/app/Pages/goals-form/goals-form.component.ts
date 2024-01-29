@@ -41,6 +41,10 @@ export class GoalsFormComponent {
     });
   }
 
+  redirectToViewGoals() {
+    this.route.navigate(['../view-goals']);
+  }
+
   onSubmit() {
     const reqBody = [{
         customerId: 5631,
@@ -64,7 +68,7 @@ export class GoalsFormComponent {
             res ? alert('Goal updated successfully') : alert('Error in updated goals')
         }) 
     }
-    this.route.navigate(['']);
+    this.redirectToViewGoals();
   }
 
   saveGoal() {
@@ -90,7 +94,7 @@ export class GoalsFormComponent {
             res ? alert('Goal updated successfully') : alert('Error in updated goals')
         })  
     }
-    this.route.navigate(['']);
+    this.redirectToViewGoals();
   }
 
   getGoalbyGoalId(id) {

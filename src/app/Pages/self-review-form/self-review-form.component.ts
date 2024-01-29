@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -10,13 +10,24 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './self-review-form.component.html',
   styleUrl: './self-review-form.component.css'
 })
-export class SelfReviewFormComponent {
+export class SelfReviewFormComponent implements OnInit{
   reactiveForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
+              private router: Router
     ) {}
+
+  ngOnInit(){
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.reactiveForm = this.formBuilder.group({
+      appraisalYear: ['5'],
+      description: [''],
+      selfRating: ['5']
+  });
+}
 
     redirectToSelfReview() {
       this.router.navigate(['/self-review']);

@@ -7,7 +7,7 @@
     <form [formGroup]="reactiveForm"> 
         <div class="mb-4 btn" style="float: right; background-color: #4b47b5; color: white;">
             <label for="appraisalYear" class="form-label m-1" ><h5>Appraisal cycle &nbsp;</h5></label>
-            <select name="appraisalYear" id="appraisalYear">
+            <select name="appraisalYear" id="appraisalYear" formControlName="appraisalYear">
                 <option value="1">2019-2020</option>
                 <option value="2">2020-2021</option>
                 <option value="3">2021-2022</option>
@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3">
             <label for="selfRating" class="form-label"><h5>Rating &nbsp; </h5></label>
-            <select name="selfRating" id="selfRating">
+            <select name="selfRating" id="selfRating" formControlName="selfRating">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
