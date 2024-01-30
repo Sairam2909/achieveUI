@@ -1,34 +1,27 @@
 import { Component } from '@angular/core';
-import { Router,  RouterLink } from '@angular/router';
-import { GoalsService } from '../../Services/goals.service';
+import { Router, RouterModule } from '@angular/router';
+import { SelfReviewService } from '../../Services/self-review.service';
 
 @Component({
   selector: 'app-self-review',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './self-review.component.html',
   styleUrl: './self-review.component.css'
 })
 export class SelfReviewComponent {
+
+  selfReviews = [];
   constructor(private router: Router,
-              private goalService: GoalsService) {}
+              private selfReviewService: SelfReviewService) {}
 
-  redirectToSelfReviewForm() {
-    this.router.navigate(['/self-review-form']);
+  ngOnInit(){
+    this.selfReviewService.getAllSelfReviews().subscribe((res)=>{
+      this.selfReviews = res;
+    })
   }
 
-  editReview() {
-    this.router.navigate(['/self-review-form'])
+  editReview(id) {
+    this.router.navigate([`/self-review-form/${id}`])
   }
-
-  redirectToDashboard() {
-    this.router.navigate(['../dashboard']);
-  }
-
-  // ngOnInit(){
-  //   this.goalService.getAllSelfReviews().subscribe((res)=>{
-  //     console.log(res);
-  //   })
-  // }
-
 }

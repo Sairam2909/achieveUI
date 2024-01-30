@@ -15,6 +15,10 @@ export class LoginComponent {
   constructor(private auth: AuthgaurdService) {}
 
   redirectToDashboard() {
-    this.auth.authenticate(this.username.nativeElement.value, this.password.nativeElement.value);
+    const reqBody = {
+      email: this.username.nativeElement.value,
+      password: this.password.nativeElement.value
+    }
+    this.auth.authenticateUser(reqBody);
   }
 }

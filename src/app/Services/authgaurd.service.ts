@@ -1,20 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthgaurdService {
 
-  constructor(private router: Router) { }
-  
   isLoggedIn: boolean = false;
-  authenticate(user, pass) {
-    if(user === 'user' && pass === 'pass'){
-      this.isLoggedIn = true;
-      this.router.navigate(['/dashboard']);
-    } else {
-      alert('Wrong credentials entered');
-    }
+  
+  constructor(private router: Router,
+              private loginService: LoginService) { }
+  
+  authenticateUser(reqBody) {
+    this.loginService.authenticate(reqBody).subscribe((res) => {
+
+      if (res.isSuccess === true) {
+        this.isLoggedIn = true;
+        this.router.navigate(['/dashboard']);
+      } else if (res.isSuccess === false) {
+        alert('Wrong credentials entered');
+      }
+
+    })
   }
 }

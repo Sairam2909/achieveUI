@@ -11,10 +11,6 @@ export class GoalsService {
 
   constructor(private http: HttpClient) { }
 
-  getAllSelfReviews(): Observable<any> {
-    return this.http.get('http://localhost:3000/selfReview/allSelfReviews');
-  }
-
   saveGoals(reqBody): Observable<any> {
     const headers = new HttpHeaders({
         Accept: 'application/json',
