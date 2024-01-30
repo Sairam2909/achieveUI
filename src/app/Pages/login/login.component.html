@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <label for="username">Username</label>
     <input type="text" id="username" placeholder="username..." autocomplete="none" #username>
 
@@ -6,4 +6,31 @@
     <input class="mb-3"type="text" id="password" placeholder="Password..." autocomplete="none" #password>
 
     <button (click)="redirectToDashboard()">Submit</button>
-</div>
+</div> -->
+
+<body class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card mx-auto border-1 mt-4" style="width: 25rem; background-color: #FFE8FF;">
+        <div class="card-body px-4">
+            <h5 class="card-title text-center">SIGN IN</h5>
+
+            <div class="mb-3 mt-4">
+                <label for="username">Email Id</label>
+                <input class="form-control form-control-md" type="text" id="username" placeholder="username..."
+                    autocomplete="none" #username>
+            </div>
+
+            <div class="mb-4">
+                <label for="password">Password</label>
+                <input class="form-control form-control-md" type="text" id="password" placeholder="Password..."
+                    autocomplete="none" #password>
+            </div>
+
+            <p class="text-end "><a href="#" class="text-black">Forgot password?</a></p>
+
+            <button class="form-control form-control-md mb-3" style="background-color: #4A154B; color: white;" (click)="redirectToDashboard()">Login</button>
+
+            <p class="mb-3 text-center">Don’t have an account ? <a href="#" class="text-black">Sign Up</a></p>
+
+        </div>
+    </div>
+</body>
