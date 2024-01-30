@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoalsDashboardComponent } from './goals-dashboard.component';
+import { GoalsDashboardComponent } from './goals-card.component';
 
 describe('GoalsDashboardComponent', () => {
   let component: GoalsDashboardComponent;

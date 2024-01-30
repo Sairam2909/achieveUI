@@ -1,20 +1,14 @@
 import { Component } from '@angular/core';
-import { Router,  RouterLink } from '@angular/router';
-import { HeaderComponent } from "../../Common/header/header.component";
-import { FooterComponent } from "../../Common/footer/footer.component";
-import { GoalsDashboardComponent } from "../goals-dashboard/goals-dashboard.component";
+import { GoalsCardComponent } from "../../Common/goals-card/goals-card.component";
+import { PerformanceReviewCardComponent } from '../../Common/performance-review-card/performance-review-card.component';
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.css',
-    imports: [HeaderComponent, FooterComponent, GoalsDashboardComponent]
+    imports: [GoalsCardComponent, PerformanceReviewCardComponent ]
 })
 export class DashboardComponent {
-  constructor(private router: Router) {}
-
-  redirectToSelfReview() {
-    this.router.navigate(['/self-review']);
-  }
+ 
 }

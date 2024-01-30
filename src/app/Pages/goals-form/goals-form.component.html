@@ -1,21 +1,24 @@
-<div class="container mt-5 rounded border border-2 p-3" style="width: 70rem; margin: 0 auto;">
-    <button class="btn btn-secondary mb-3" (click)="redirectToViewGoals()" style=" background-color: #4b47b5; color: white;">
+<div class="container mt-5 rounded border border-2 p-3">
+    <button class="btn btn-primary mb-3" (click)="redirectToViewGoals()">
         <i class="bi bi-arrow-left"></i> Back
     </button>
     <form [formGroup]="reactiveForm"> 
-        <div class="mb-3">
+        <div class="mb-4">
             <label for="writeYourGoal" class="form-label"><h2>Write your Goal</h2></label>
             <textarea class="form-control" id="writeYourGoal" rows="3" formControlName="description"></textarea>
         </div>
-        <div class="mb-3">
+        <div class="mb-4 col-2">
             <label for="dueDate" class="form-label"><h5>Set a Due Date</h5></label><br />
-            <input type="date" class="dueDate" id="dueDate" rows="3" formControlName="dueDate" />
+            <input type="date" class="form-control" id="dueDate" rows="3" formControlName="dueDate" />
         </div>
-        <div class="mb-3">
-            <button href="#" class="btn btn" (click)="saveGoal()"
-                style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px; padding-right: 10px;">Save</button>
-            <button href="#" class="btn btn" (click)="onSubmit()"
-                style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px; padding-right: 10px;">Submit</button>
+        <div class="mb-4">
+            <button class="btn btn-primary me-3" (click)="saveGoal()">Save</button>
+            <button class="btn btn-primary me-3" (click)="onSubmit()">Submit</button>
         </div>
     </form>
 </div>
+
+
+
+
+

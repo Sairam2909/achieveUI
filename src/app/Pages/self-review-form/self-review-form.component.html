@@ -1,12 +1,15 @@
-<div class="container mt-5 rounded border border-2 p-3" style="width: 70rem; margin: 0 auto;">
+<div class="container mt-5 rounded border border-2 p-3">
 
-    <button class="btn btn-secondary mb-3" (click)="redirectToSelfReview()" style=" background-color: #4b47b5; color: white;">
+    <button class="btn btn-primary mb-3" (click)="redirectToSelfReview()">
         <i class="bi bi-arrow-left"></i> Back
     </button>
 
-    <form [formGroup]="reactiveForm"> 
-        <div class="mb-4 btn" style="float: right; background-color: #4b47b5; color: white;">
-            <label for="appraisalYear" class="form-label m-1" ><h5>Appraisal cycle &nbsp;</h5></label>
+    <form [formGroup]="reactiveForm">
+
+        <div class="mb-4 btn btn-primary float-end">
+            <label for="appraisalYear" class="form-label m-1">
+                <h5>Appraisal cycle &nbsp;</h5>
+            </label>
             <select name="appraisalYear" id="appraisalYear" formControlName="appraisalYear">
                 <option value="1">2019-2020</option>
                 <option value="2">2020-2021</option>
@@ -14,28 +17,30 @@
                 <option value="4">2022-2023</option>
                 <option value="5">2023-2024</option>
             </select>
-        </div>
-        <br/>
-
+        </div><br />
         <div class="mb-3">
-            <label for="writeYourGoal" class="form-label"><h2>Write your accomplishments</h2></label>
+            <label for="writeYourGoal" class="form-label">
+                <h2>Write your accomplishments</h2>
+            </label>
             <textarea class="form-control" id="writeYourGoal" rows="3" formControlName="description"></textarea>
         </div>
         <div class="mb-3">
-            <label for="selfRating" class="form-label"><h5>Rating &nbsp; </h5></label>
-            <select name="selfRating" id="selfRating" formControlName="selfRating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+            <label for="selfRating" class="form-label">
+                <h5>Rating &nbsp; </h5>
+            </label>
+            <div class="col-1">
+                <select class="form-select" name="selfRating" id="selfRating" formControlName="selfRating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
         </div>
         <div class="mb-3">
-            <button href="#" class="btn btn"
-                style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px; padding-right: 10px;">Save</button>
-            <button href="#" class="btn btn"
-                style="font-weight: bold; background-color: #4b47b5; color: white; margin-right: 10px; padding-right: 10px;">Submit</button>
+            <button type="button" class="btn btn-primary me-2">Save</button>
+            <button type="button" class="btn btn-primary">Submit</button>
         </div>
     </form>
 </div>

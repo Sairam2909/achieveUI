@@ -3,13 +3,13 @@ import { Router,  RouterLink } from '@angular/router';
 import { GoalsService } from '../../Services/goals.service';
 
 @Component({
-  selector: 'goals-dashboard',
+  selector: 'goals-card',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './goals-dashboard.component.html',
-  styleUrl: './goals-dashboard.component.css'
+  templateUrl: './goals-card.component.html',
+  styleUrl: './goals-card.component.css'
 })
-export class GoalsDashboardComponent implements OnInit{
+export class GoalsCardComponent implements OnInit{
 
   allGoals = [];
   daysLeft: number;
