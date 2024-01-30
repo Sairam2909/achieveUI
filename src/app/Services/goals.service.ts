@@ -7,9 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class GoalsService {
 
-  apiURL = `http://localhost:8080/goals/`;
+  apiURL = `http://localhost:3000/goals/`;
 
   constructor(private http: HttpClient) { }
+
+  getAllSelfReviews(): Observable<any> {
+    return this.http.get('http://localhost:3000/selfReview/allSelfReviews');
+  }
 
   saveGoals(reqBody): Observable<any> {
     const headers = new HttpHeaders({

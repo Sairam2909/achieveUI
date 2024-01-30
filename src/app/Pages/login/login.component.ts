@@ -1,5 +1,4 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthgaurdService } from '../../Services/authgaurd.service';
 
 @Component({
@@ -16,6 +15,6 @@ export class LoginComponent {
   constructor(private auth: AuthgaurdService) {}
 
   redirectToDashboard() {
-    this.auth.verify(this.username.nativeElement.value, this.password.nativeElement.value);
+    this.auth.authenticate(this.username.nativeElement.value, this.password.nativeElement.value);
   }
 }

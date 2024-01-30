@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router,  RouterLink } from '@angular/router';
+import { GoalsService } from '../../Services/goals.service';
 
 @Component({
   selector: 'app-self-review',
@@ -9,7 +10,8 @@ import { Router,  RouterLink } from '@angular/router';
   styleUrl: './self-review.component.css'
 })
 export class SelfReviewComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private goalService: GoalsService) {}
 
   redirectToSelfReviewForm() {
     this.router.navigate(['/self-review-form']);
@@ -22,5 +24,11 @@ export class SelfReviewComponent {
   redirectToDashboard() {
     this.router.navigate(['../dashboard']);
   }
+
+  // ngOnInit(){
+  //   this.goalService.getAllSelfReviews().subscribe((res)=>{
+  //     console.log(res);
+  //   })
+  // }
 
 }
