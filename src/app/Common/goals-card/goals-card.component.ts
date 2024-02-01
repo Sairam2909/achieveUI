@@ -19,6 +19,10 @@ export class GoalsCardComponent implements OnInit{
   redirectToViewGoals() {
     this.router.navigate(['/view-goals']);
   }
+
+  redirectToCreateGoalForm() {
+    this.router.navigate(['/create-goal']);
+  }
   
   ngOnInit() {
     this.goalService.getGoals().subscribe((res) => {

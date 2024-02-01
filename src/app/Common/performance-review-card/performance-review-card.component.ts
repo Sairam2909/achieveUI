@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-performance-review-card',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './performance-review-card.component.html',
   styleUrl: './performance-review-card.component.css'
 })
