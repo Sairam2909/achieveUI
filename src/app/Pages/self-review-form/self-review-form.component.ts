@@ -15,6 +15,7 @@ export class SelfReviewFormComponent implements OnInit{
   reactiveForm: FormGroup;
   saveReviewInDb: number = 0; // Default value
   userId: string;
+  performanceId: number;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -41,7 +42,8 @@ export class SelfReviewFormComponent implements OnInit{
   getReviewById(userId) {
     this.selfReviewService.getReviewByUserId(userId).subscribe((res)=>{
       console.log(res);
-      // this.saveReviewInDb = res[0].isSaved;
+      this.saveReviewInDb = res[0].isSaved;
+      this.performanceId = res[0].id;
       this.reactiveForm.controls['description'].patchValue(res[0].reviewComment);
       this.reactiveForm.controls['selfRating'].patchValue(res[0].reviewRating);
     })
@@ -58,8 +60,9 @@ export class SelfReviewFormComponent implements OnInit{
       reviewRating: this.reactiveForm.value.selfRating,
       status: "In Draft",
       cycleYear: this.reactiveForm.value.appraisalYear,
+      isSaved: 1,
       customerId:989,
-      userId: "df34",
+      userId: "23",
       isDeleted: false
     }]
     if(this.saveReviewInDb === 0) {
@@ -68,7 +71,7 @@ export class SelfReviewFormComponent implements OnInit{
       })
     }
     else if(this.saveReviewInDb === 1) {
-      this.selfReviewService.updateReview(reqBody, this.userId).subscribe((res) => {
+      this.selfReviewService.updateReview(reqBody, this.performanceId).subscribe((res) => {
         console.log(res);
       })
     }
@@ -82,8 +85,9 @@ export class SelfReviewFormComponent implements OnInit{
       reviewRating: this.reactiveForm.value.selfRating,
       status: "Submitted",
       cycleYear: this.reactiveForm.value.appraisalYear,
+      isSaved: 0,
       customerId:989,
-      userId: "df34",
+      userId: "23",
       isDeleted: false
     }]
     if(this.saveReviewInDb === 0) {
@@ -92,7 +96,7 @@ export class SelfReviewFormComponent implements OnInit{
       })
     }
     else if(this.saveReviewInDb === 1) {
-      this.selfReviewService.updateReview(reqBody, this.userId).subscribe((res) => {
+      this.selfReviewService.updateReview(reqBody, this.performanceId).subscribe((res) => {
         console.log(res);
       })
     }

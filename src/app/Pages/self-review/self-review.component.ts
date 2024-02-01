@@ -16,6 +16,10 @@ export class SelfReviewComponent {
               private selfReviewService: SelfReviewService) {}
 
   ngOnInit(){
+    this.getAllReviews();
+  }
+
+  getAllReviews() {
     this.selfReviewService.getAllSelfReviews().subscribe((res)=>{
       this.selfReviews = res;
     })
