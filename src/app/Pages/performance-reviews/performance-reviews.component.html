@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-between my-4 mx-4">
+    <div>
+        <a routerLink="../dashboard" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Back
+        </a>
+    </div>
+    <div>
+        <div class="dropdown">
+            <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter Reviews <i class="bi bi-caret-down-fill"></i>
+            </button>
+            <div class="dropdown-menu me-3" aria-labelledby="navbarDropdown" style="width: 2px;">
+                <a class="dropdown-item" (click)="selectedOption = 'selfReview'">Self Reviews</a>
+                <a class="dropdown-item"  (click)="selectedOption = 'receivedReviews'">Received Reviews</a>
+                <a class="dropdown-item"  (click)="selectedOption = 'providedReviews'">Provided Reviews</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+@if (selectedOption === 'selfReview'|| !selectedOption) {
+    <div><app-self-review></app-self-review></div>
+}
+@if (selectedOption === 'receivedReviews') {
+    <div><app-received-reviews></app-received-reviews></div>
+}
+
+@if (selectedOption === 'providedReviews') {
+    <div><app-provided-reviews></app-provided-reviews></div>
+}

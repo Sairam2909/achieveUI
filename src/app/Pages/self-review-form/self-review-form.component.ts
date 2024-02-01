@@ -49,8 +49,8 @@ export class SelfReviewFormComponent implements OnInit{
     })
   }
 
-  redirectToSelfReview() {
-    this.router.navigate(['/self-review']);
+  redirectTodashboard() {
+    this.router.navigate(['/dashboard']);
   }
 
   saveReview() {
@@ -75,7 +75,7 @@ export class SelfReviewFormComponent implements OnInit{
         console.log(res);
       })
     }
-    this.router.navigate(['../self-review']);
+    this.router.navigate(['../performance-review']);
   }
 
   submitReview() {
@@ -100,6 +100,6 @@ export class SelfReviewFormComponent implements OnInit{
         console.log(res);
       })
     }
-    this.router.navigate(['../self-review']);
+    this.router.navigate(['../performance-review']);
   }
 }

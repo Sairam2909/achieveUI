@@ -10,7 +10,6 @@ import { SelfReviewService } from '../../Services/self-review.service';
   styleUrl: './self-review.component.css'
 })
 export class SelfReviewComponent {
-
   selfReviews = [];
   constructor(private router: Router,
               private selfReviewService: SelfReviewService) {}
@@ -28,4 +27,5 @@ export class SelfReviewComponent {
   editReview(id) {
     this.router.navigate([`/self-review-form/${id}`])
   }
+
 }

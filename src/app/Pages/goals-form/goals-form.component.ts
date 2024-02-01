@@ -45,6 +45,10 @@ export class GoalsFormComponent {
     this.route.navigate(['../view-goals']);
   }
 
+  redirectToDashboard() {
+    this.route.navigate(['/dashboard']);
+  }
+
   onSubmit() {
     const reqBody = [{
         customerId: 5631,

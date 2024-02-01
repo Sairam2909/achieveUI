@@ -11,7 +11,14 @@ import { LoginComponent } from "./Pages/login/login.component";
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HeaderComponent, GoalsCardComponent, GoalsFormComponent, FooterComponent, LoginComponent]
+    imports: [
+      RouterOutlet, 
+      HeaderComponent, 
+      GoalsCardComponent, 
+      GoalsFormComponent, 
+      FooterComponent, 
+      LoginComponent,
+    ]
 })
 export class AppComponent {
   title = 'achieveUI';

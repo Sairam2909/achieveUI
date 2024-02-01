@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoalsCardComponent } from './goals-card.component';
+import { OtherReviewFormComponent } from './other-review-form.component';
 
-describe('GoalsCardComponent', () => {
-  let component: GoalsCardComponent;
-  let fixture: ComponentFixture<GoalsCardComponent>;
+describe('OtherReviewFormComponent', () => {
+  let component: OtherReviewFormComponent;
+  let fixture: ComponentFixture<OtherReviewFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GoalsCardComponent]
+      imports: [OtherReviewFormComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(GoalsCardComponent);
+    fixture = TestBed.createComponent(OtherReviewFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,8 +3,8 @@
         <div class="card-header d-flex justify-content-between align-items-center font-weight-bold">
             <h5><b>Performance Reviews</b></h5>
             <div>
-                <a routerLink="/self-review-form" class="btn btn-primary me-3"><i class="bi bi-plus"></i> Write Self reviews</a>
-                <button (click)="redirectToSelfReview()" class="btn btn-primary font-weight-bold">View Reviews</button>
+                <button class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i> Write reviews</button>
+                <button (click)="redirectToPerformanceReview()" class="btn btn-primary font-weight-bold">View Reviews</button>
             </div>
         </div>
         <div class="card-body d-flex gap-3 flex-wrap justify-content-between">
@@ -39,3 +39,33 @@
         </div>
     </div>
 </div>
+
+  
+  <!-- Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Write reviews</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex ">
+
+            <div (click)="redirectToSelfReviewForm()" class="card mb-2 me-4" data-bs-dismiss="modal" style="width: 14rem;">
+                <div class="card-body text-center">
+                    <h1 class="card-text"><i class="bi bi-person-fill"></i></h1>
+                    <h5 class="card-title text-primary font-weight-bold">For Self</h5>
+                </div>
+            </div>
+
+            <div (click)="redirectToOtherReviewForm()" class="card mb-2" data-bs-dismiss="modal" style="width: 14rem;">
+                <div class="card-body text-center">
+                    <h1 class="card-text"><i class="bi bi-person-fill"></i><i class="bi bi-person-fill"></i><i class="bi bi-person-fill"></i></h1>
+                    <h5 class="card-title text-primary font-weight-bold">For Others</h5>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
