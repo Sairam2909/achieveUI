@@ -33,7 +33,7 @@ export class SelfReviewFormComponent implements OnInit{
 
   initializeForm() {
     this.reactiveForm = this.formBuilder.group({
-      appraisalYear: ['5'],
+      appraisalYear: ['2023-2024'],
       description: [''],
       selfRating: ['5']
     });
@@ -55,7 +55,7 @@ export class SelfReviewFormComponent implements OnInit{
 
   saveReview() {
     const reqBody = [{
-      managerId: 89,
+      // managerId: 89,
       reviewComment: this.reactiveForm.value.description,
       reviewRating: this.reactiveForm.value.selfRating,
       status: "In Draft",
@@ -63,7 +63,8 @@ export class SelfReviewFormComponent implements OnInit{
       isSaved: 1,
       customerId:989,
       userId: "23",
-      isDeleted: false
+      isDeleted: false,
+      appraisalCycleId: 'TI1'
     }]
     if(this.saveReviewInDb === 0) {
       this.selfReviewService.saveReview(reqBody).subscribe((res) => {
@@ -80,7 +81,7 @@ export class SelfReviewFormComponent implements OnInit{
 
   submitReview() {
     const reqBody = [{
-      managerId: 89,
+      // managerId: 89,
       reviewComment: this.reactiveForm.value.description,
       reviewRating: this.reactiveForm.value.selfRating,
       status: "Submitted",
@@ -88,7 +89,8 @@ export class SelfReviewFormComponent implements OnInit{
       isSaved: 0,
       customerId:989,
       userId: "23",
-      isDeleted: false
+      isDeleted: false,
+      appraisalCycleId: 'TI1'
     }]
     if(this.saveReviewInDb === 0) {
       this.selfReviewService.saveReview(reqBody).subscribe((res) => {
@@ -100,6 +102,6 @@ export class SelfReviewFormComponent implements OnInit{
         console.log(res);
       })
     }
-    this.router.navigate(['../performance-review']);
+    this.router.navigate(['../performance-reviews']);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { SelfReviewService } from '../../Services/self-review.service';
 
 @Component({
   selector: 'app-performance-review-card',
@@ -10,12 +11,21 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class PerformanceReviewCardComponent implements OnInit{
 
-  constructor(private router: Router) {}
+  totalSelfReviews: number;
+  totalOtherReviews: number;
+  constructor(private router: Router,
+              private selfReviewService: SelfReviewService) {}
 
   ngOnInit(): void {
     this.redirectToOtherReviewForm;
     this.redirectToPerformanceReview;
     this.redirectToOtherReviewForm;
+    this.selfReviewService.getAllSelfReviews().subscribe((res) => {
+      this.totalSelfReviews = res.length;
+    })
+    this.selfReviewService.getAllOtherReviews().subscribe((res) => {
+      this.totalOtherReviews = res.length;
+    })
   }
 
   redirectToPerformanceReview() {

@@ -1,33 +1,35 @@
 <h3 class="text-center">Reviews you have provided</h3>
 
 <div class="container mt-4" style="width: 70rem; margin: 0 auto;">
+    @for (review of reviews; track review; let i = $index) {
     <div class="card text my-2" style="width: 70rem;  background-color: white;">
         <div class="card-body">
             <div class="d-flex justify-content-start">
                 <i class="bi bi-arrow-right-circle"
                     style="color: #4b47b5; font-weight: bold; font-size: 40px; margin: 10px;"></i>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>{{review.reviewComment}}</p>
             </div>
             <div class="d-flex justify-content" style="margin-left:57px;">
                  <p class="card-text text-muted font-weight-bold me-3 pe-3 border-end">
-                    <i class="bi bi-calendar"></i> Appraisal Year: 2024-2025
+                    <i class="bi bi-calendar"></i> Appraisal Year: {{review.cycleYear}}
                 </p>
 
                 <p class="card-text text-muted font-weight-bold me-3 pe-3 border-end">
-                    <i class="bi bi-star-fill"></i> Rating: 5
+                    <i class="bi bi-star-fill"></i> Rating: {{review.reviewRating}}
                 </p>
 
                 <p class="card-text text-muted font-weight-bold me-3 pe-3">
-                    Status: draft
+                    Status: {{review.status}}
                 
                 </p>
     
             </div>
                 <div class="d-flex justify-content-end mt-3">
-                    <button class="btn btn-primary font-weight-bold">
+                    <button class="btn btn-primary font-weight-bold" (click)="editReview(review.userId, i)">
                         Edit review
                     </button>
                 </div>
         </div>
     </div>
+}
 </div>

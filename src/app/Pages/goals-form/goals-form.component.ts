@@ -60,7 +60,8 @@ export class GoalsFormComponent {
         createdBy: this.userName,
         createdOn: new Date().toJSON().slice(0, 10),
         updatedBy: null,
-        updatedOn: null
+        updatedOn: null,
+        isDeleted: false
     }]
     if(this.saveGoalInDb === 0) {
         this.goalService.saveGoals(reqBody).subscribe((res) => {
@@ -86,7 +87,8 @@ export class GoalsFormComponent {
         createdBy: this.userName,
         createdOn: new Date().toJSON().slice(0, 10),
         updatedBy: null,
-        updatedOn: null
+        updatedOn: null,
+        isDeleted: false
     }]
     if (this.saveGoalInDb === 0) {
         this.goalService.saveGoals(reqBody).subscribe((res) => {

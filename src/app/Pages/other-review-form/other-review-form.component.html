@@ -2,67 +2,75 @@
 
     <div class="row mb-3">
         <div class="col">
-            <button class="btn btn-primary" (click)="redirectToDashboard()">
+            <button class="btn btn-primary" (click)="redirectToPerformanceReviews()">
                 <i class="bi bi-arrow-left"></i> Back
             </button>
         </div>   
     </div>
-
-    <div class="col text-end">
-        <div class="mb-4 btn btn-primary">
-            <label for="appraisalYear" class="form-label m-1">
-                <h5>Appraisal cycle &nbsp;</h5>
-            </label>
-            <select name="appraisalYear" id="appraisalYear" formControlName="appraisalYear">
-                <option value="1">2019-2020</option>
-                <option value="2">2020-2021</option>
-                <option value="3">2021-2022</option>
-                <option value="4">2022-2023</option>
-                <option value="5">2023-2024</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="row mb-4">
-        <div class="col">
-            <h5>Employee name for feedback</h5>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control form-control-lg" placeholder="Search..." aria-label="Search" aria-describedby="searchButton">
-            </div>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col">
-            <label for="writeYourGoal" class="form-label">
-                <h2>Write your Feedback</h2>
-            </label>
-            <textarea class="form-control" id="writeYourGoal" rows="3" formControlName="description"></textarea>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col">
-            <label for="selfRating" class="form-label">
-                <h5>Rating &nbsp; </h5>
-            </label>
-            <div class="col-1">
-                <select class="form-select" name="selfRating" id="selfRating" formControlName="selfRating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+    <form [formGroup]="reactiveForm">
+        <div class="col text-end">
+            <div class="mb-4 btn btn-primary">
+                <label for="appraisalYear" class="form-label m-1">
+                    <h5>Appraisal cycle &nbsp;</h5>
+                </label>
+                <select name="appraisalYear" id="appraisalYear" formControlName="appraisalYear">
+                    <option value="2019-2020">2019-2020</option>
+                    <option value="2020-2021">2020-2021</option>
+                    <option value="2021-2022">2021-2022</option>
+                    <option value="2022-2023">2022-2023</option>
+                    <option value="2023-2024">2023-2024</option>
                 </select>
             </div>
         </div>
-    </div>
 
-    <div class="row mb-3">
-        <div class="col">
-            <button type="button" class="btn btn-primary me-2">Save</button>
-            <button type="button" class="btn btn-primary">Submit</button>
+        <div class="row mb-4">
+            <div class="col">
+                <h5>Employee name for feedback</h5>
+                <div style="height: 20px; width: 270px;">
+                    <ng-select [items]="employeeList"
+                    bindLabel="name"
+                    bindValue="id"
+                    [readonly]="reviewReadOnly"
+                    [notFoundText]="'No User found'"
+                    [placeholder]="'Select an Employee'"
+                    formControlName="selectedEmployee"
+                    (change)="onEmployeeSelected($event)">
+                    </ng-select>
+                </div>
+            </div>
         </div>
-    </div>
 
+        <div class="row mb-3">
+            <div class="col">
+                <label for="writeYourGoal" class="form-label">
+                    <h2>Write your Feedback</h2>
+                </label>
+                <textarea class="form-control" id="writeYourGoal" rows="3" formControlName="description"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label for="selfRating" class="form-label">
+                    <h5>Rating &nbsp; </h5>
+                </label>
+                <div class="col-1">
+                    <select class="form-select" name="selfRating" id="selfRating" formControlName="selfRating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <button type="button" class="btn btn-primary me-2" (click)="saveReview()">Save</button>
+                <button type="button" class="btn btn-primary" (click)="submitReview()">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>
