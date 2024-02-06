@@ -17,18 +17,25 @@
                 <p class="card-text text-muted font-weight-bold me-3 pe-3 border-end">
                     <i class="bi bi-star-fill"></i> Rating: {{review.reviewRating}}
                 </p>
-
-                <p class="card-text text-muted font-weight-bold me-3 pe-3">
+                
+                <p class="card-text text-muted font-weight-bold me-3 pe-3 border-end">
                     Status: {{review.status}}
                 
                 </p>
+
+                <p class="card-text text-muted font-weight-bold me-3 pe-3">
+                 Sent to: {{review.receiveName}}(Employee code: {{review.receiveId}})
+                </p>
+
     
             </div>
+            @if (review.isSaved) {
                 <div class="d-flex justify-content-end mt-3">
                     <button class="btn btn-primary font-weight-bold" (click)="editReview(review.userId, i)">
                         Edit review
                     </button>
                 </div>
+            }
         </div>
     </div>
 }

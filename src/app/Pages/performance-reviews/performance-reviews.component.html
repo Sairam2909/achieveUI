@@ -10,12 +10,11 @@
                 Filter Reviews <i class="bi bi-caret-down-fill"></i>
             </button>
             <div class="dropdown-menu me-3" aria-labelledby="navbarDropdown" style="width: 2px;">
-                <a class="dropdown-item" (click)="selectedOption = 'selfReview'">Self Reviews</a>
-                <a class="dropdown-item"  (click)="selectedOption = 'receivedReviews'">Received Reviews</a>
-                <a class="dropdown-item"  (click)="selectedOption = 'providedReviews'">Provided Reviews</a>
+                <a class="dropdown-item" (click)="selectOption('selfReview')" [class.active]="selectedOption === 'selfReview' || !selectedOption" style="cursor: pointer;">Self Reviews</a>
+                <a class="dropdown-item" (click)="selectOption('receivedReviews')" [class.active]="selectedOption === 'receivedReviews'" style="cursor: pointer;">Received Reviews</a>
+                <a class="dropdown-item" (click)="selectOption('providedReviews')" [class.active]="selectedOption === 'providedReviews'" style="cursor: pointer;">Provided Reviews</a>
             </div>
         </div>
-        
     </div>
 </div>
 
@@ -28,4 +27,5 @@
 
 @if (selectedOption === 'providedReviews') {
     <div><app-provided-reviews></app-provided-reviews></div>
-}
+} 
+

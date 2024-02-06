@@ -9,32 +9,34 @@
 <!-- Goals card -->
 <div class="container mt-5">
     @if (allGoals.length > 0) {
-        @for (goal of allGoals; track goal; let i = $index) {
-        <div class="card text my-2 w-100 bg-white">
-            <div class="card-body">
-                <div class="d-flex justify-content-start">
-                    <i class="bi bi-arrow-right-circle text-primary m-2 fs-3"></i>
-                    <p>{{goal.description}}</p>
-                </div>
-                <div class="d-flex justify-content-start mt-3 mx-5">
-                    <p class="card-text text-muted font-weight-bold me-3 pe-3 border-end">
-                        <i class="bi bi-calendar"></i> {{getNumberOfDays(i) > 0 ? 'Due in ' + getNumberOfDays(i) + (getNumberOfDays(i) > 1 ? ' days' : ' day') : 'Overdue by ' + (getNumberOfDays(i) * -1) + ((getNumberOfDays(i) * -1) > 1 ? ' days' : ' day')}}
-                    </p>
-                    <p class="card-text text-muted font-weight-bold me-3 pe-3">
-                        Status: {{goal.status}}
-                    </p>
-                </div>
-                <div class="d-flex justify-content-end mt-3">
-                    @if (goal.status !== 'Submitted') {
-                    <button class="btn btn-primary" (click)="editGoal(i)">Edit Goal</button>
-                    } 
-                </div>
+    @for (goal of allGoals; track goal; let i = $index) {
+    <div class="card text my-2 w-100 bg-white">
+        <div class="card-body">
+            <div class="d-flex justify-content-start">
+                <i class="bi bi-arrow-right-circle text-primary m-2 fs-3"></i>
+                <p>{{goal.description}}</p>
+            </div>
+            <div class="d-flex justify-content-start mt-3 mx-5">
+                <p class="card-text text-muted font-weight-bold me-3 pe-3 border-end">
+                    <i class="bi bi-calendar"></i> {{getNumberOfDays(i) > 0 ? 'Due in ' + getNumberOfDays(i) +
+                    (getNumberOfDays(i) > 1 ? ' days' : ' day') : 'Overdue by ' + (getNumberOfDays(i) * -1) +
+                    ((getNumberOfDays(i) * -1) > 1 ? ' days' : ' day')}}
+                </p>
+                <p class="card-text text-muted font-weight-bold me-3 pe-3">
+                    Status: {{goal.status}}
+                </p>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                @if (goal.status !== 'Submitted') {
+                <button class="btn btn-primary" (click)="editGoal(i)">Edit Goal</button>
+                }
             </div>
         </div>
-        }
+    </div>
+    }
     } @else {
-        <div class="d-flex justify-content-center align-items-center">
-            <h3>Click on Create Goals to get started</h3>
-        </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <h3>No Goals yet.</h3>
+    </div>
     }
 </div>

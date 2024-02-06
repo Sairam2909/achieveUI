@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,30 +6,34 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SelfReviewService {
-
   apiURL = `http://localhost:3000/selfReview/`;
   otherReviewApiUrl = `http://localhost:3000/otherReview/`
 
   constructor(private http: HttpClient) { }
 
-  saveReview(reqBody): Observable<any> {
+  saveSelfReview(reqBody): Observable<any> {
     return this.http.post(`${this.apiURL}`, reqBody);
   }
+  
+  updateSelfReview(id, reqBody): Observable<any> {
+    const headers = new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    });
+    const options = { headers };
+    return this.http.put(this.apiURL + id, reqBody);
+}
 
-  updateReview(reqBody, userId): Observable<any> {
-    return this.http.put(this.apiURL + userId, reqBody)
-  }
-
-  deleteReview(userId): Observable<any> {
-    return this.http.delete(this.apiURL + userId);
+  deleteSelfReview(id): Observable<any> {
+    return this.http.delete(this.apiURL + id);
   }
 
   getAllSelfReviews(): Observable<any> {
     return this.http.get(this.apiURL + 'allSelfReviews');
   }
 
-  getReviewByUserId(userId):Observable<any> {
-    return this.http.get(this.apiURL + userId);
+  getSelfReviewById(id):Observable<any> {
+    return this.http.get(this.apiURL + id);
   }
   
   getEmployeeList(): Observable<any> {
@@ -41,7 +45,7 @@ export class SelfReviewService {
   }
   
   getAllOtherReviews(): Observable<any> {
-    return this.http.get(this.otherReviewApiUrl + 'allSelfReviews');
+    return this.http.get(this.otherReviewApiUrl + 'allOtherReviews');
   }
 
   getOtherReviewByUserId(userId):Observable<any> {

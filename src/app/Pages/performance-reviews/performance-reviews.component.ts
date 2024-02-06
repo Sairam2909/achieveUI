@@ -17,9 +17,16 @@ export class PerformanceReviewsComponent implements OnInit{
 
   constructor(private selfReviewService: SelfReviewService) {}
   ngOnInit() {
-    this.selfReviewService.getAllOtherReviews().subscribe((res) => {
+    this.selectedOption = localStorage.getItem('selectedOption') || 'selfReview';
+    
+    this.selfReviewService.getAllSelfReviews().subscribe((res) => {
       console.log(res);
     })
+  }
+
+  selectOption(option: string) {
+    localStorage.setItem('selectedOption', option);
+    this.selectedOption = option;
   }
   
 }

@@ -12,6 +12,7 @@ import { GoalsService } from '../../Services/goals.service';
 export class GoalsCardComponent implements OnInit{
 
   allGoals = [];
+  // goalsDueIn30Days: number = 0;
   daysLeft: number;
   constructor(private router: Router,
               private goalService: GoalsService) {}
@@ -34,4 +35,17 @@ export class GoalsCardComponent implements OnInit{
   countCompletedGoals(){
     return this.allGoals.filter(goal => goal.status === 'completed').length;
   }
+
+  countGoalsDueIn30Days() {
+    const today = new Date();
+    const thirtyDaysFromNow = new Date(today);
+    thirtyDaysFromNow.setDate(today.getDate() + 30);
+  
+    return this.allGoals.filter(goal => {
+      const dueDate = new Date(goal.dueDate); 
+      return dueDate <= thirtyDaysFromNow;
+    }).length;
+  }
+  
+  
 }
