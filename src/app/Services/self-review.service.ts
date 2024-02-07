@@ -44,7 +44,7 @@ export class SelfReviewService {
   }
 
   getOtherReviewByUserId(userId):Observable<any> {
-    return this.http.get(this.otherReviewApiUrl + userId);
+    return this.http.get(this.otherReviewApiUrl + 'otherReviews/' + userId);
   }
 
   saveOtherReview(reqBody): Observable<any> {

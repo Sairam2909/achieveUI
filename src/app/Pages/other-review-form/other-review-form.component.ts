@@ -16,6 +16,7 @@ export class OtherReviewFormComponent implements OnInit{
   selectedEmployee: string;
   selectedEmployeeId: number;
   userId: string;
+  id: number;
   index: number;
   reviewReadOnly: boolean = false;
   otherReviewSaved: boolean = false;
@@ -54,8 +55,9 @@ export class OtherReviewFormComponent implements OnInit{
   getOtherReviewById(userId) {
     this.selfReviewService.getOtherReviewByUserId(userId).subscribe((res) => {
       // console.log(res);
+      this.id = res[this.index].id;
       this.reviewReadOnly = true;
-      this.otherReviewSaved = res[0].isSaved;
+      this.otherReviewSaved = res[this.index].isSaved;
       this.reactiveForm.controls['description'].patchValue(res[this.index].reviewComment);
       this.reactiveForm.controls['selfRating'].patchValue(res[this.index].reviewRating);
       this.reactiveForm.controls['appraisalYear'].patchValue(res[this.index].cycleYear);
@@ -89,7 +91,7 @@ export class OtherReviewFormComponent implements OnInit{
       senderName: "Thomas",
       receiveName: this.selectedEmployee,
       senderId: 2001,
-      receiveId: "1001",
+      receiveId: this.selectedEmployeeId,
       cycleYear: this.reactiveForm.value.appraisalYear,
       isSaved: 1,
       customerId:989,
@@ -103,7 +105,7 @@ export class OtherReviewFormComponent implements OnInit{
       })
     }
     else if(this.otherReviewSaved === true) {
-      this.selfReviewService.updateOtherReviews(this.userId, reqBody).subscribe((res) => {
+      this.selfReviewService.updateOtherReviews(this.id, reqBody).subscribe((res) => {
         console.log(res);
       })
     }
@@ -133,7 +135,7 @@ export class OtherReviewFormComponent implements OnInit{
     }
   
     else if(this.otherReviewSaved === true) {
-      this.selfReviewService.updateOtherReviews(this.userId, reqBody).subscribe((res) => {
+      this.selfReviewService.updateOtherReviews(this.id, reqBody).subscribe((res) => {
         console.log(res);
       })
     }
