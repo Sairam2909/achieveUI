@@ -14,15 +14,10 @@ export class SelfReviewService {
   saveSelfReview(reqBody): Observable<any> {
     return this.http.post(`${this.apiURL}`, reqBody);
   }
-  
+
   updateSelfReview(id, reqBody): Observable<any> {
-    const headers = new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-    });
-    const options = { headers };
     return this.http.put(this.apiURL + id, reqBody);
-}
+  }
 
   deleteSelfReview(id): Observable<any> {
     return this.http.delete(this.apiURL + id);

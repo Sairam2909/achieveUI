@@ -131,6 +131,7 @@ export class OtherReviewFormComponent implements OnInit{
         console.log(res);
       })
     }
+  
     else if(this.otherReviewSaved === true) {
       this.selfReviewService.updateOtherReviews(this.userId, reqBody).subscribe((res) => {
         console.log(res);

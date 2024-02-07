@@ -40,6 +40,14 @@ export class SelfReviewFormComponent implements OnInit{
     });
   }
 
+  redirectTodashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+
+  redirectToPerformanceReview(){
+    this.router.navigate(['/performance-reviews']);
+  }
+
   getSelfReviewById(userId) {
     this.selfReviewService.getSelfReviewById(userId).subscribe((res)=>{
       console.log(res);
@@ -50,12 +58,29 @@ export class SelfReviewFormComponent implements OnInit{
     })
   }
 
-  redirectTodashboard() {
-    this.router.navigate(['/dashboard']);
+  onSubmit() {
+    // console.log("on submit fired");
+    const reqBody = [{
+          reviewComment: this.reactiveForm.value.description,
+          reviewRating: this.reactiveForm.value.selfRating,
+          status: "Submitted",
+          cycleYear: this.reactiveForm.value.appraisalYear,
+          isSaved: 0,
+          customerId:989,
+          userId: "23",
+          isDeleted: false,
+          appraisalCycleId: 'TI1'
+        }]
+    if(this.saveReviewInDb === 0) {
+        this.selfReviewService.saveSelfReview(reqBody).subscribe((res) => {
+            res ? alert('self review saved successfully') : alert('Error in saving self review')
+        })    
+    }else {
+      this.selfReviewService.updateSelfReview(this.idForUpdate, reqBody).subscribe((res) => {
+          res ? alert('selfreview updated successfully') : alert('Error in updated self review')
+      })  
   }
-
-  redirectToPerformanceReview(){
-    this.router.navigate(['/performance-reviews']);
+    this.redirectToPerformanceReview();
   }
 
   saveReview() {
@@ -79,32 +104,6 @@ export class SelfReviewFormComponent implements OnInit{
         this.selfReviewService.updateSelfReview(this.idForUpdate, reqBody).subscribe((res) => {
             res ? alert('selfreview updated successfully') : alert('Error in updated self review')
         })  
-    }
-    this.redirectToPerformanceReview();
-  }
-
-  onSubmit() {
-    // console.log("on submit fired");
-    const reqBody = [{
-          reviewComment: this.reactiveForm.value.description,
-          reviewRating: this.reactiveForm.value.selfRating,
-          status: "Submitted",
-          cycleYear: this.reactiveForm.value.appraisalYear,
-          isSaved: 0,
-          customerId:989,
-          userId: "23",
-          isDeleted: false,
-          appraisalCycleId: 'TI1'
-        }]
-    if(this.saveReviewInDb === 0) {
-        this.selfReviewService.saveSelfReview(reqBody).subscribe((res) => {
-            res ? alert('self review saved successfully') : alert('Error in saving self review')
-        })    
-    }
-    else if(this.saveReviewInDb === 1) {
-        this.selfReviewService.updateSelfReview(this.idForUpdate, reqBody).subscribe((res) => {
-            res ? alert('Goal updated successfully') : alert('Error in updated goals')
-        }) 
     }
     this.redirectToPerformanceReview();
   }

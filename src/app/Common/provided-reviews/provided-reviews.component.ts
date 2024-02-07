@@ -25,4 +25,5 @@ export class ProvidedReviewsComponent implements OnInit{
   editReview(userId, i) {
     this.router.navigate([`other-review-form/${userId}/${i}`])
   }
+  
 }
