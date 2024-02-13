@@ -12,31 +12,31 @@ import { ProvidedReviewsComponent } from './Common/provided-reviews/provided-rev
 import { PerformanceReviewsComponent } from './Pages/performance-reviews/performance-reviews.component';
 
 export const routes: Routes = [
-    { path: '', component: LoginComponent },
-    { path: 'dashboard', component: DashboardComponent, canActivate: [CanActivate]},
-    { path: 'performance-reviews', component: PerformanceReviewsComponent, canActivate: [CanActivate]},
-    { path: 'self-reviews', component: SelfReviewComponent, canActivate: [CanActivate]},
-    { path: 'self-review-form', component: SelfReviewFormComponent , canActivate: [CanActivate]},
-    { path: 'self-review-form/:id', component: SelfReviewFormComponent , canActivate: [CanActivate]},
-    { path: 'other-review-form', component: OtherReviewFormComponent , canActivate: [CanActivate]},
-    { path: 'other-review-form/:id/:index', component: OtherReviewFormComponent , canActivate: [CanActivate]},
-    { path: 'create-goal', component: GoalsFormComponent , canActivate: [CanActivate]},
-    { path: 'view-goals', component: ViewGoalsComponent , canActivate: [CanActivate]},
-    { path: 'received-reviews', component: ReceivedReviewsComponent , canActivate: [CanActivate]},
-    { path: 'provided-reviews', component: ProvidedReviewsComponent , canActivate: [CanActivate]},
-    { path: 'Goal/:userId/:goalId', component: GoalsFormComponent , canActivate: [CanActivate]}
-    
     // { path: '', component: LoginComponent },
-    // { path: 'dashboard', component: DashboardComponent },
-    // { path: 'performance-reviews', component: PerformanceReviewsComponent },
-    // { path: 'self-reviews', component: SelfReviewComponent },
-    // { path: 'self-review-form', component: SelfReviewFormComponent  },
-    // { path: 'self-review-form/:id', component: SelfReviewFormComponent },
-    // { path: 'other-review-form', component: OtherReviewFormComponent  },
-    // { path: 'other-review-form/:id/:index', component: OtherReviewFormComponent  },
-    // { path: 'create-goal', component: GoalsFormComponent  },
-    // { path: 'view-goals', component: ViewGoalsComponent  },
-    // { path: 'received-reviews', component: ReceivedReviewsComponent  },
-    // { path: 'provided-reviews', component: ProvidedReviewsComponent  },
-    // { path: 'Goal/:userId/:goalId', component: GoalsFormComponent  }
+    // { path: 'dashboard', component: DashboardComponent, canActivate: [CanActivate]},
+    // { path: 'performance-reviews', component: PerformanceReviewsComponent, canActivate: [CanActivate]},
+    // { path: 'self-reviews', component: SelfReviewComponent, canActivate: [CanActivate]},
+    // { path: 'self-review-form', component: SelfReviewFormComponent , canActivate: [CanActivate]},
+    // { path: 'self-review-form/:id', component: SelfReviewFormComponent , canActivate: [CanActivate]},
+    // { path: 'other-review-form', component: OtherReviewFormComponent , canActivate: [CanActivate]},
+    // { path: 'other-review-form/:id/:index', component: OtherReviewFormComponent , canActivate: [CanActivate]},
+    // { path: 'create-goal', component: GoalsFormComponent , canActivate: [CanActivate]},
+    // { path: 'view-goals', component: ViewGoalsComponent , canActivate: [CanActivate]},
+    // { path: 'received-reviews', component: ReceivedReviewsComponent , canActivate: [CanActivate]},
+    // { path: 'provided-reviews', component: ProvidedReviewsComponent , canActivate: [CanActivate]},
+    // { path: 'Goal/:userId/:goalId', component: GoalsFormComponent , canActivate: [CanActivate]}
+    
+    { path: '', component: LoginComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'performance-reviews', component: PerformanceReviewsComponent },
+    { path: 'self-reviews', component: SelfReviewComponent },
+    { path: 'self-review-form', component: SelfReviewFormComponent  },
+    { path: 'self-review-form/:id', component: SelfReviewFormComponent },
+    { path: 'other-review-form', component: OtherReviewFormComponent  },
+    { path: 'other-review-form/:id/:index', component: OtherReviewFormComponent  },
+    { path: 'create-goal', component: GoalsFormComponent  },
+    { path: 'view-goals', component: ViewGoalsComponent  },
+    { path: 'received-reviews', component: ReceivedReviewsComponent  },
+    { path: 'provided-reviews', component: ProvidedReviewsComponent  },
+    { path: 'Goal/:userId/:goalId', component: GoalsFormComponent  }
 ];
