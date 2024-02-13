@@ -20,6 +20,7 @@ export class OtherReviewFormComponent implements OnInit{
   index: number;
   reviewReadOnly: boolean = false;
   otherReviewSaved: boolean = false;
+  // employeeList = [];
   employeeList = [
     { id: 1, name: 'Rahul' },
     { id: 2, name: 'Nikhil' },
@@ -45,6 +46,7 @@ export class OtherReviewFormComponent implements OnInit{
 
   ngOnInit() {
     this.initializeForm();
+    // this.getAllEmployeeList();
     this.userId = this.activatedRoute.snapshot.paramMap.get('id');
     this.index = Number(this.activatedRoute.snapshot.paramMap.get('index'));
     if(this.userId) {
@@ -52,9 +54,14 @@ export class OtherReviewFormComponent implements OnInit{
     }
   }
 
+  getAllEmployeeList(){
+    this.selfReviewService.getAllEmployees().subscribe((res) => {
+      this.employeeList = res;
+    })
+  }
+
   getOtherReviewById(userId) {
     this.selfReviewService.getOtherReviewByUserId(userId).subscribe((res) => {
-      // console.log(res);
       this.id = res[this.index].id;
       this.reviewReadOnly = true;
       this.otherReviewSaved = res[this.index].isSaved;

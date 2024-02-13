@@ -14,4 +14,9 @@ export class LoginService {
   authenticate(reqBody): Observable<any> {
     return this.http.post(`${this.apiURL}`, reqBody);
   }
+
+  verifyToken(requestBody): Observable<any> {
+    return this.http.post(`${this.apiURL}verifyToken`, requestBody);
+
+  }
 }

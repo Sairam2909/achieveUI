@@ -11,17 +11,44 @@ export class AuthgaurdService {
   
   constructor(private router: Router,
               private loginService: LoginService) { }
-  
+
   authenticateUser(reqBody) {
-    this.loginService.authenticate(reqBody).subscribe((res) => {
-
-      if (res.isSuccess === true) {
-        this.isLoggedIn = true;
-        this.router.navigate(['/dashboard']);
-      } else if (res.isSuccess === false) {
-        alert('Wrong credentials entered');
+    const storedToken = localStorage.getItem('token');
+  
+    if (storedToken) {
+      this.loginService.verifyToken(storedToken).subscribe((res) => {
+        if (res.status) {
+          this.handleSuccessfulAuthentication();
+        } else {
+          this.handleFailedAuthentication(reqBody);
+        }
+      });
+    } else {
+      this.handleFailedAuthentication(reqBody);
+    }
+  }
+  
+  handleSuccessfulAuthentication() {
+    this.isLoggedIn = true;
+    this.router.navigate(['/dashboard']);
+  }
+  
+  handleFailedAuthentication(reqBody) {
+    localStorage.removeItem('token');
+    this.authUser(reqBody);
+  }
+  
+  authUser(reqBody) {
+    this.loginService.authenticate(reqBody).subscribe(
+      (res) => {
+        localStorage.setItem('token', res.originalToken);
+        this.handleSuccessfulAuthentication();
+      },
+      (error) => {
+        if (error.status === 401) {
+          alert(error.error);
+        }
       }
-
-    })
+    );
   }
 }

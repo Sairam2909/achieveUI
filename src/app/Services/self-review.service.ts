@@ -55,4 +55,7 @@ export class SelfReviewService {
    return this.http.post(this.otherReviewApiUrl, reqBody); 
   }
 
+  getAllEmployees(): Observable<any> {
+    return null;
+  }
 }
